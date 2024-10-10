@@ -7,11 +7,12 @@ use App\Models\User;
 use App\Helper\JWTToken;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OTPMail;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
 
-    /*function LoginPage():View{
+    function LoginPage():View{
         return view('pages.auth.login-page');
     }
 
@@ -31,7 +32,7 @@ class UserController extends Controller
 
     function ProfilePage():View{
         return view('pages.dashboard.profile-page');
-    }*/
+    }
 
 
 
@@ -72,8 +73,9 @@ class UserController extends Controller
             return response()->json([
                  'status' => 'success',
                  'message' => 'User Login Successful',
-                 "token"  => $token
-            ],200);
+                 //"token"  => $token
+            //],200);
+            ],200)->cookie('token',$token,time()+60*24*30);;
         }
         else{
             return response()->json([

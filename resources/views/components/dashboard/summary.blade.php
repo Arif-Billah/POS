@@ -165,7 +165,7 @@
 
 
 <script>
-    getList();
+    /*getList();
     async function getList() {
         showLoader();
         let res=await axios.get("/summary");
@@ -180,5 +180,5 @@
 
 
         hideLoader();
-    }
+    }*/
 </script>
