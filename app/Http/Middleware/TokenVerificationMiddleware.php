@@ -23,11 +23,11 @@ class TokenVerificationMiddleware
        //return $token;
         $result=JWTToken::VerifyToken($token);
         if($result=="unauthorized"){
-            //return redirect('/userLogin');
-            return response()->json([
-                'status'=>"fail",
-                "message"=>"unauthorized"
-            ],401);
+            return redirect('/userLogin');
+            // return response()->json([
+            //     'status'=>"fail",
+            //     "message"=>"unauthorized"
+            // ],401);
         }
         else{
             $request->headers->set('email',$result->userEmail);
@@ -37,7 +37,7 @@ class TokenVerificationMiddleware
         return $next($request);
     }
 
-     function ResetPassword(Request $request){
+     /*function ResetPassword(Request $request){
         try{
             $email=$request->header('email');
             $password=$request->input('password');
@@ -53,5 +53,5 @@ class TokenVerificationMiddleware
                 'message' => 'Something Went Wrong',
             ],200);
         }
-    }
+    }*/
 }
